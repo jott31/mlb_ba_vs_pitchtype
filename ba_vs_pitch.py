@@ -70,9 +70,16 @@ if not filtered.empty:
             filtered[filtered['events'] == "triple"].shape[0] + \
             filtered[filtered['events'] == "home_run"].shape[0],
 
-        atbats = filtered['abs'].sum(),
+        atbats = filtered[filtered['events'] == "single"].shape[0] + \
+            filtered[filtered['events'] == "double"].shape[0] + \
+            filtered[filtered['events'] == "triple"].shape[0] + \
+            filtered[filtered['events'] == "home_run"].shape[0] + \
+            filtered[filtered['events'] == "field_out"].shape[0] + \
+            filtered[filtered['events'] == "strikeout"].shape[0] + \
+            filtered[filtered['events'] == "grounded_into_double_play"].shape[0],
 
         ba = hits/atbats if atbats > 0 else 0
         st.write(f"Batting Average: {ba:.3f}")
 else:
       st.write("No data available")
+
