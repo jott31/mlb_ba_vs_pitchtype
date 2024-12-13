@@ -23,6 +23,8 @@ def get_data():
 
     data['pitch_type'] = data['pitch_type'].map(pitch_type_mapping).fillna('Unknown')
 
+    return data
+
 
 
 data = get_data()
