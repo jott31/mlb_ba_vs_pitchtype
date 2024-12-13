@@ -19,10 +19,11 @@ pitch_type_mapping = {
 
 @st.cache_data
 def get_data():
-    data = statcast(start_dt = "2024-03-20" , end_dt = "2024-09-30",parallel=True)
-
-    data['pitch_type'] = data['pitch_type'].map(pitch_type_mapping).fillna('Unknown')
-
+    try:
+        data = pd.read_csv("statcast_2024.csv")
+    except:
+        data = statcast(start_dt="2024-03-20",end_dt="2024-09-30",parallel=True)
+        data.to_csv("statcast_2024.csv",index=False)
     return data
 
 
