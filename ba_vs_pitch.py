@@ -23,10 +23,19 @@ def get_filtered_data(start_date, end_date):
 
 start_date = st.date_input("Start Date", value=pd.to_datetime("2024-06-01"))
 end_date = st.date_input("End Date", value=pd.to_datetime("2024-06-30"))
-data = get_filtered_data(start_date=start_date.strftime("%Y-%m-%d"), end_date=end_date.strftime("%Y-%m-%d"))
 
+if start_date > end_date:
+    st.error("Start date must be before or equal to the end date.")
+else:
+    # Fetch data based on user inputs
+    with st.spinner("Fetching data..."):
+        data = get_filtered_data(start_date=start_date.strftime("%Y-%m-%d"), end_date=end_date.strftime("%Y-%m-%d"))
 
-data = get_filtered_data()
+    # Display success message
+    st.success(f"Data loaded successfully for the range {start_date} to {end_date}.")
+
+    # Debug or display data as needed
+    st.write(data.head())
 
 st.title("Batting average against pitches MLB 2024")
 
