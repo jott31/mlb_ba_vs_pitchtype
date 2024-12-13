@@ -30,7 +30,7 @@ else:
     # Fetch data based on user inputs
     with st.spinner("Fetching data..."):
         data = get_filtered_data(start_date=start_date.strftime("%Y-%m-%d"), end_date=end_date.strftime("%Y-%m-%d"))
-        data = data['events'].dropna()
+        data = data[data['events'].dropna()]
     
     # Display success message
     st.success(f"Data loaded successfully for the range {start_date} to {end_date}.")
