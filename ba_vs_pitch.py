@@ -80,7 +80,7 @@ if not filtered.empty:
 
         
 
-        ba = hits.count()/atbats.count() if atbats.count() > 0 else 0
+        ba = hits/atbats if atbats > 0 else 0
         st.write(f"Batting Average: {ba:.3f}")
 else:
       st.write("No data available")
