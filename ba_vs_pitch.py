@@ -19,7 +19,8 @@ pitch_type_mapping = {
 
 @st.cache_data
 def get_filtered_data(start_date, end_date):
-    return statcast(start_dt=start_date, end_dt=end_date, parallel=True)
+    data = statcast(start_dt=start_date, end_dt=end_date, parallel=True)
+    return data.dropna(subset=["events"])
 
 start_date = st.date_input("Start Date", value=pd.to_datetime("2024-06-01"))
 end_date = st.date_input("End Date", value=pd.to_datetime("2024-06-30"))
