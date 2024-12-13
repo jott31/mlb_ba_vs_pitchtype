@@ -18,17 +18,15 @@ pitch_type_mapping = {
 }
 
 @st.cache_data
-def get_data():
-    try:
-        data = pd.read_csv("statcast_2024.csv")
-    except:
-        data = statcast(start_dt="2024-03-20",end_dt="2024-09-30",parallel=True)
-        data.to_csv("statcast_2024.csv",index=False)
-    return data
+def get_filtered_data(start_date, end_date):
+    return statcast(start_dt=start_date, end_dt=end_date, parallel=True)
+
+start_date = st.date_input("Start Date", value=pd.to_datetime("2024-06-01"))
+end_date = st.date_input("End Date", value=pd.to_datetime("2024-06-30"))
+data = get_filtered_data(start_date=start_date.strftime("%Y-%m-%d"), end_date=end_date.strftime("%Y-%m-%d"))
 
 
-
-data = get_data()
+data = get_filtered_data()
 
 st.title("Batting average against pitches MLB 2024")
 
