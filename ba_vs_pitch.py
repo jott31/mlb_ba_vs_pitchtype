@@ -78,8 +78,11 @@ if not filtered.empty:
             filtered[filtered['events'] == "strikeout"].shape[0] + \
             filtered[filtered['events'] == "grounded_into_double_play"].shape[0],
 
-        ba = hits/atbats if atbats > 0 else 0
+        
+
+        ba = hits.count()/atbats.count() if atbats.count() > 0 else 0
         st.write(f"Batting Average: {ba:.3f}")
 else:
       st.write("No data available")
+
 
