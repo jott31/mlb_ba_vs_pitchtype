@@ -68,7 +68,7 @@ if not filtered.empty:
         hits = filtered[filtered['events'] == "single"].shape[0] + \
             filtered[filtered['events'] == "double"].shape[0] + \
             filtered[filtered['events'] == "triple"].shape[0] + \
-            filtered[filtered['events'] == "home_run"].shape[0],
+            filtered[filtered['events'] == "home_run"].shape[0]
 
         atbats = filtered[filtered['events'] == "single"].shape[0] + \
             filtered[filtered['events'] == "double"].shape[0] + \
@@ -76,7 +76,7 @@ if not filtered.empty:
             filtered[filtered['events'] == "home_run"].shape[0] + \
             filtered[filtered['events'] == "field_out"].shape[0] + \
             filtered[filtered['events'] == "strikeout"].shape[0] + \
-            filtered[filtered['events'] == "grounded_into_double_play"].shape[0],
+            filtered[filtered['events'] == "grounded_into_double_play"].shape[0]
 
         
 
